@@ -72,14 +72,18 @@ and open the template in the editor.
         
         <header>
             <div class="container fluid my-5 text-center">
-                <h2>Carga el autor aquí</h2>
+                <h2>Seguro/a desea eliminar el autor <span th:text="${autor.nombre}"></span>?</h2>
             </div>
         </header>
         
         <div class="container-sm col-6">
-            <form  action="/autor/registro" method="POST">
+            <form  th:action="@{/autor/eliminado/__${autor.id}__}" method="POST">
+                
                 <div class="form-group">
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre Autor Aquí" />
+                    
+                    <input hidden th:value="${id}" name="id">
+                    
+                    <input hidden th:value="${autor.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre Autor Aquí" />
                 </div>
                    <div th:if="${error != null}" class="alert alert-danger" role="alert">
                     <h5>Error!</h5>
@@ -91,7 +95,7 @@ and open the template in the editor.
                     <p>Se ha cargado el libro correctamente!!</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                      <button type="submit" class="btn btn-primary mt-3 px-5">Cargar</button>
+                      <button type="submit" class="btn btn-danger mt-3 px-5">Eliminar</button>
                 </div>
               
                      </form>

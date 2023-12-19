@@ -120,8 +120,8 @@ public class LibroService {
         if (titulo.isEmpty() || titulo == null) {
             throw new MyException("El título no puede ser nulo o estar vacío");
         }
-        if (ejemplares == null) {
-            throw new MyException("la Cantidad de ejemplares no puede ser nula");
+        if (ejemplares == null || ejemplares < 1) {
+            throw new MyException("la Cantidad de ejemplares no puede ser nula o menor a 0");
         }
         if (idAutor == 0) {
             throw new MyException("Debe seleccionar el Autor");

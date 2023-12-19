@@ -61,6 +61,21 @@ public class AutorService {
             
         }
         
+        public void eliminarAutor(Integer id){
+            
+            Optional<Autor> respuesta = autorRepository.findById(id);
+            
+            if(respuesta.isPresent()){
+                Autor autor = respuesta.get();
+                autorRepository.delete(autor);
+            }
+            
+        }
+        
+        public Autor getOne(Integer id){
+            return autorRepository.getOne(id);
+        }
+        
         private void validar(String nombre) throws MyException{
              if (nombre.isEmpty() || nombre == null) {
             throw new MyException("El nombre no puede ser nulo o estar vacío");

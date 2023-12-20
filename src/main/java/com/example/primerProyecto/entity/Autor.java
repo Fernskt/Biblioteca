@@ -5,10 +5,13 @@
  */
 package com.example.primerProyecto.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,14 +23,19 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
+     @OneToMany(mappedBy = "autor", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Libro> libros;
 
     
     public Autor() {
     }
-    
-    public Autor(Integer id, String nombre) {
+
+    public Autor(Integer id, String nombre, List<Libro> libros) {
         this.id = id;
         this.nombre = nombre;
+        this.libros = libros;
     }
+    
+    
 
 }

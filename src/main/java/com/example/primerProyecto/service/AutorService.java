@@ -6,8 +6,10 @@
 package com.example.primerProyecto.service;
 
 import com.example.primerProyecto.entity.Autor;
+import com.example.primerProyecto.entity.Libro;
 import com.example.primerProyecto.exceptions.MyException;
 import com.example.primerProyecto.repository.AutorRepository;
+import com.example.primerProyecto.repository.LibroRepository;
 import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,12 @@ public class AutorService {
     
     @Autowired
     AutorRepository autorRepository;
+    
+    @Autowired
+    LibroRepository libroRepository;
+    
+    @Autowired
+    LibroService libroService;
     
     @Transactional
     public void crearAutor(String nombre) throws MyException{
@@ -61,15 +69,14 @@ public class AutorService {
             
         }
         
+        
+        
+        @Transactional
         public void eliminarAutor(Integer id){
             
-            Optional<Autor> respuesta = autorRepository.findById(id);
-            
-            if(respuesta.isPresent()){
-                Autor autor = respuesta.get();
-                autorRepository.delete(autor);
-            }
-            
+             Autor autor = autorRepository.findById(id).orElse(null);
+            autorRepository.delete(autor);
+        
         }
         
         public Autor getOne(Integer id){

@@ -52,6 +52,8 @@ public class LibroService {
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setEjemplares(ejemplares);
+        libro.setEjemplaresPrestados(0);
+        libro.setEjemplaresRestantes(ejemplares);
         libro.setAlta(true);
         libro.setFechaAlta(new Date());
         libro.setAutor(autor);

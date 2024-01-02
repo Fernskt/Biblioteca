@@ -33,6 +33,7 @@ public class AutorService {
     @Autowired
     LibroService libroService;
     
+    
     @Transactional
     public void crearAutor(String nombre) throws MyException{
         
@@ -69,8 +70,6 @@ public class AutorService {
             
         }
         
-        
-        
         @Transactional
         public void eliminarAutor(Integer id){
             
@@ -84,9 +83,21 @@ public class AutorService {
         }
         
         private void validar(String nombre) throws MyException{
+            
+            
              if (nombre.isEmpty() || nombre == null) {
             throw new MyException("El nombre no puede ser nulo o estar vacío");
-        }
+             }
+             
+             List<Autor> autores = listarAutores();
+             
+             for (Autor autore : autores) {
+                  if(nombre.equalsIgnoreCase(autore.getNombre())){
+                throw new MyException("El autor ya existe");
+            }
+       
+            }
+          
     }
     
 }

@@ -46,15 +46,16 @@ public class EditorialControlador {
     }
     
      @PostMapping("/registro")
-     public String registro(@RequestParam String nombre){
+     public String registro(@RequestParam String nombre, ModelMap modelo){
         try {
             System.out.println("Se cargo correctamente la editorial " + nombre);
             editorialService.crearEditorial(nombre);
+            modelo.put("exito", "Se cargo la editorial correctamente");
         } catch (MyException ex) {
-            Logger.getLogger(EditorialControlador.class.getName()).log(Level.SEVERE, null, ex);
+            modelo.put("error", ex.getMessage());
             return "editorial_form.html";
         }
-         return "editorial_form.html";
+         return "redirect:../editorial/lista";
      }
     
 }

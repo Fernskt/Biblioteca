@@ -78,7 +78,7 @@ and open the template in the editor.
                         <th scope="col">ID del Autor</th>
                         <th scope="col" >Nombre</th>
                         <th scope="col" >Acciones</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -93,7 +93,11 @@ and open the template in the editor.
                     </tr>
                 </tbody>
             </table>
-        </div>
 
+        </div>
+        <div th:if="${exito != null}"  class="alert alert-success" role="alert">
+            <h5>Actualizacion exitosa!</h5>
+            <p>Se ha cargado el autor correctamente!!</p>
+        </div>
 
 </html>

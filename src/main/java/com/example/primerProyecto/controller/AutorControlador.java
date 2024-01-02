@@ -67,11 +67,13 @@ public class AutorControlador {
     public String modificar(@PathVariable Integer id, String nombre, ModelMap modelo){
         try {
             autorService.modificarAutor(nombre, id);
-            return "redirect:../lista";
+            modelo.put("exito", "El autor se ha modificado correctamente");
+            
         } catch (MyException ex) {
            modelo.put("error", ex.getMessage());
            return "modificar_autor.html";
         }
+        return "redirect:../lista";
     }
     
     @PostMapping("/registro")
@@ -83,7 +85,7 @@ public class AutorControlador {
             return "autor_form.html";
         }
   
-        return "autor_form.html";
+        return "redirect:../autor/lista";
     }
     
     

@@ -23,6 +23,8 @@ public class Libro {
     
     private String titulo;
     private Integer ejemplares;
+    private Integer ejemplaresPrestados;
+    private Integer ejemplaresRestantes;
     
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
@@ -38,15 +40,19 @@ public class Libro {
     public Libro() {       
     }
 
-    public Libro(Long isbn, String titulo, Integer ejemplares, Date fechaAlta, boolean alta, Autor autor, Editorial editorial) {
+    public Libro(Long isbn, String titulo, Integer ejemplares, Integer ejemplaresPrestados, Integer ejemplaresRestantes, Date fechaAlta, boolean alta, Autor autor, Editorial editorial) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.ejemplares = ejemplares;
+        this.ejemplaresPrestados = ejemplaresPrestados;
+        this.ejemplaresRestantes = ejemplaresRestantes;
         this.fechaAlta = fechaAlta;
         this.alta = alta;
         this.autor = autor;
         this.editorial = editorial;
     }
+
+   
 
     
 }

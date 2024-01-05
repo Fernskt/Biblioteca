@@ -64,22 +64,24 @@ public class AutorControlador {
     }
     
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Integer id, String nombre, ModelMap modelo){
-        try {
-            autorService.modificarAutor(nombre, id);
-            modelo.put("exito", "El autor se ha modificado correctamente");
-            
-        } catch (MyException ex) {
-           modelo.put("error", ex.getMessage());
-           return "modificar_autor.html";
-        }
-        return "redirect:../lista";
+public String modificar(@PathVariable Integer id, @RequestParam String nombre, ModelMap modelo) {
+    try {
+        autorService.modificarAutor(nombre, id);
+        Autor autorModificado = autorService.getOne(id);
+        modelo.put("autor", autorModificado); // Agrega el autor al modelo
+        modelo.put("exito", "El autor se ha modificado correctamente");
+    } catch (MyException ex) {
+        modelo.put("error", ex.getMessage());
+        return "redirect:../modificar/{id}";
     }
+    return "redirect:../lista";
+}
     
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, ModelMap modelo){
         try {
             autorService.crearAutor(nombre);
+             modelo.put("exito", "El autor se ha creado correctamente");
         } catch (MyException ex) {
              modelo.put("error", ex.getMessage());
             return "autor_form.html";

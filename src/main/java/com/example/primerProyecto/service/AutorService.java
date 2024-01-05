@@ -66,6 +66,8 @@ public class AutorService {
                 Autor autor = respuesta.get();
                 autor.setNombre(nombre);
                 autorRepository.save(autor);
+            }else{
+                System.out.println("La respuesta no esta presente");
             }
             
         }
@@ -81,6 +83,8 @@ public class AutorService {
         public Autor getOne(Integer id){
             return autorRepository.getOne(id);
         }
+        
+        
         
         private void validar(String nombre) throws MyException{
             

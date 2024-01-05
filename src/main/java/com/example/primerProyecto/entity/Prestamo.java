@@ -38,6 +38,19 @@ public class Prestamo {
     
     @ManyToOne
     private Cliente cliente;
+
+    public Prestamo() {
+    }
+
+    public Prestamo(Integer id, Date fechaPrestamo, Date fechaDevolucion, Libro libro, Cliente cliente) {
+        this.id = id;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+        this.libro = libro;
+        this.cliente = cliente;
+    }
+    
+    
     
     
 }

@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Libros</title>
@@ -17,20 +11,19 @@ and open the template in the editor.
         <nav th:replace="fragments/nav"></nav>
 
         <div class="container">
-            <h2 class="m-5 text-center">Lista de Libros disponibles</h2>
+            <h2 class="m-5 text-center">Lista de Prestamos</h2>
             <div class="table-responsive-xl">
                 <table class="table table-striped table-dark mx-5">
                     <thead>
                         <tr>
-                            <th scope="col">ISBN</th>
-                            <th scope="col" >Titulo</th>
-                            <th scope="col">Ejemplares</th>
-                            <th scope="col">Prestados</th>
-                            <th scope="col">Disponibles</th>
-                            <th scope="col">Autor</th>
-                            <th scope="col">Editorial</th>
-                            <th scope="col">Acciones</th>
-                            <th scope="col">Prestar</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col" >Apellido</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Libro</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Fecha Prestamo</th>
+                            <th scope="col">Fecha Dev</th>
+                            <th scope="col">Devolver</th>
                         </tr>
                     </thead>
                     <tbody>

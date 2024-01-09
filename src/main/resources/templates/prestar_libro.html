@@ -28,7 +28,7 @@ and open the template in the editor.
                       <input  th:value="${isbn}" name="id" type="hidden"/>
              
                     <select class="form-select" name="documento">
-                        <option value=0>Seleccionar Clientes</option>
+                        <option value="0">Seleccionar Clientes</option>
                         <option th:each="cliente : ${clientes}" 
                                 th:value="${cliente.documento}"
                                 th:text="${cliente.nombre}"/>

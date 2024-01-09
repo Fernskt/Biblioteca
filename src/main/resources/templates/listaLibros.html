@@ -14,8 +14,10 @@ and open the template in the editor.
     </head>
     <body class="bg-dark text-light">
 
+            <!-- Barra de Navegacion -->
         <nav th:replace="fragments/nav"></nav>
-
+        
+        <!-- Tabla de libros -->
         <div class="container">
             <h2 class="m-5 text-center">Lista de Libros disponibles</h2>
             <div class="table-responsive-xl">
@@ -52,6 +54,7 @@ and open the template in the editor.
                             <td>
                                  <a class="btn btn-primary btn-sm my-1" th:href="@{/prestamo/registrarPrestamo/__${libro.isbn}__}"
                                    th:if="${libro.ejemplaresRestantes > 0}">Prestar</a>
+                                <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0}">No Disp</a>
                             </td>
 
                         </tr>

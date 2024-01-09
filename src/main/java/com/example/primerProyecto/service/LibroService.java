@@ -63,6 +63,14 @@ public class LibroService {
         
     }
     
+    public void darDeBaja(Boolean alta){
+        
+        Libro libro = new Libro();
+        libro.setAlta(false);
+        libroRepository.save(libro);
+        
+    }
+    
     public List<Libro> listarLibros(){
         
         List<Libro> libros = new ArrayList();

@@ -6,6 +6,7 @@
 package com.example.primerProyecto.controller;
 
 import com.example.primerProyecto.entity.Cliente;
+import com.example.primerProyecto.exceptions.MyException;
 import com.example.primerProyecto.service.ClienteService;
 import com.example.primerProyecto.service.PrestamoService;
 import java.util.List;
@@ -42,9 +43,14 @@ public class PrestamoControlador {
     }
     
     @PostMapping("/registroPrestamo/{isbn}")
-    public String registroPrestamo(@PathVariable Long isbn, @RequestParam Long documento){
+    public String registroPrestamo(@PathVariable Long isbn, @RequestParam Long documento,  ModelMap modelo){
         
-      prestamoService.generarPrestamo(isbn, documento);
+        try {
+            prestamoService.generarPrestamo(isbn, documento);
+        } catch (MyException ex) {
+           modelo.addAttribute("error", ex.getMessage());
+            return "redirect:/prestamo/registrarPrestamo/{isbn}";
+        }
         
         return "redirect:../../libro/lista";
     }

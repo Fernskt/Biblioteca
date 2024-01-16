@@ -33,6 +33,7 @@ and open the template in the editor.
                             <th scope="col">Editorial</th>
                             <th scope="col">Acciones</th>
                             <th scope="col">Prestar</th>
+                            <th scope="col">Dar de Baja</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,8 +48,8 @@ and open the template in the editor.
                             <td th:text="${libro.editorial.nombre}"></td>
 
                             <td>
-                                <a class="btn btn-secondary btn-sm my-1">Modificar</a>
-                                <a class="btn btn-danger btn-sm my-1">Eliminar</a>
+                                <a class="text-decoration-none">Modificar</a>
+                                <a class="text-decoration-none text-danger">Eliminar</a>
                                
                             </td>
                             <td>
@@ -56,7 +57,11 @@ and open the template in the editor.
                                    th:if="${libro.ejemplaresRestantes > 0}">Prestar</a>
                                 <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0}">No Disp</a>
                             </td>
-
+                              <td>
+                               
+                                <a class="btn btn-danger btn-sm my-1">Baja</a>
+                               
+                            </td>
                         </tr>
                     </tbody>
                 </table>

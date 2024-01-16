@@ -63,12 +63,12 @@ public class LibroService {
         
     }
     
-    public void darDeBaja(Boolean alta){
+    public void cambiarEstadoLibro(Long isbn){
         
-        Libro libro = new Libro();
-        libro.setAlta(false);
+        Libro libro = libroRepository.findById(isbn).get();
+        
+        libro.setAlta(!libro.isAlta());
         libroRepository.save(libro);
-        
     }
     
     public List<Libro> listarLibros(){

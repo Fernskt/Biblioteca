@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,12 @@ public class libroControlador {
         modelo.addAttribute("editoriales", editoriales);
         return "libro_form.html";
 
+    }
+    
+    @PostMapping("/baja/${isbn}")
+    public String darDeBaja(@PathVariable Long isbn){
+        libroService.cambiarEstadoLibro(isbn);
+        return "libro_form";
     }
 
     @PostMapping("/registro")

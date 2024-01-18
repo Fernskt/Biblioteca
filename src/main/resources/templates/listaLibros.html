@@ -14,9 +14,9 @@ and open the template in the editor.
     </head>
     <body class="bg-dark text-light">
 
-            <!-- Barra de Navegacion -->
+        <!-- Barra de Navegacion -->
         <nav th:replace="fragments/nav"></nav>
-        
+
         <!-- Tabla de libros -->
         <div class="container">
             <h2 class="m-5 text-center">Lista de Libros disponibles</h2>
@@ -50,17 +50,18 @@ and open the template in the editor.
                             <td>
                                 <a class="text-decoration-none">Modificar</a>
                                 <a class="text-decoration-none text-danger">Eliminar</a>
-                               
+
                             </td>
                             <td>
-                                 <a class="btn btn-primary btn-sm my-1" th:href="@{/prestamo/registrarPrestamo/__${libro.isbn}__}"
+                                <a class="btn btn-primary btn-sm my-1" th:href="@{/prestamo/registrarPrestamo/__${libro.isbn}__}"
                                    th:if="${libro.ejemplaresRestantes > 0}">Prestar</a>
-                                <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0}">No Disp</a>
+                                <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0 || libro.alta == false}">No Disp</a>
                             </td>
-                              <td>
-                               
-                                <a class="btn btn-danger btn-sm my-1">Baja</a>
-                               
+                            <td>
+                                <form  th:action="@{/libro/baja/__${isbn}__}" method="POST">
+                                    <input  th:value="${isbn}" name="isbn" type="number"/>
+                                    <button type="input" class="btn btn-danger btn-sm my-1" >Baja</button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>

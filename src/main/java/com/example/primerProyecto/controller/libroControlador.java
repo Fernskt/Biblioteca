@@ -59,10 +59,10 @@ public class libroControlador {
 
     }
     
-    @PostMapping("/baja/${isbn}")
+    @PostMapping("/baja/{isbn}")
     public String darDeBaja(@PathVariable Long isbn){
         libroService.cambiarEstadoLibro(isbn);
-        return "libro_form";
+        return "redirect:/libro/baja/{isbn}";
     }
 
     @PostMapping("/registro")

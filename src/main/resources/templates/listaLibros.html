@@ -58,8 +58,8 @@ and open the template in the editor.
                                 <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0 || libro.alta == false}">No Disp</a>
                             </td>
                             <td>
-                                <form  th:action="@{/libro/baja/__${isbn}__}" method="POST">
-                                    <input  th:value="${isbn}" name="isbn" type="number"/>
+                                <form  th:action="@{/libro/baja/__${isbn}__}" method="POST" >
+                                    <input  th:value="${isbn}" name="isbn" type="number" hidden="true"/>
                                     <button type="input" class="btn btn-danger btn-sm my-1" >Baja</button>
                                 </form>
                             </td>

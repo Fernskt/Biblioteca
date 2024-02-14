@@ -54,13 +54,14 @@ and open the template in the editor.
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-sm my-1" th:href="@{/prestamo/registrarPrestamo/__${libro.isbn}__}"
-                                   th:if="${libro.ejemplaresRestantes > 0}">Prestar</a>
+                                   th:if="${libro.ejemplaresRestantes > 0 && libro.alta == true}">Prestar</a>
                                 <a class="btn btn-secondary disabled btn-sm" role="button" aria-disabled="true" th:if="${libro.ejemplaresRestantes <= 0 || libro.alta == false}">No Disp</a>
                             </td>
                             <td>
-                                <form  th:action="@{/libro/baja/__${isbn}__}" method="POST" >
-                                    <input  th:value="${isbn}" name="isbn" type="number" hidden="true"/>
-                                    <button type="input" class="btn btn-danger btn-sm my-1" >Baja</button>
+                                <form  th:action="@{/libro/baja/__${libro.isbn}__}" method="POST" >
+                                    <input  th:value="${libro.isbn}" name="isbn" type="number" hidden />
+                                    <button type="submit" class="btn btn-danger btn-sm my-1"  th:if="${ libro.alta == true}">Baja</button>
+                                     <button type="submit" class="btn btn-success btn-sm my-1" th:if="${ libro.alta == false}">Alta</button>
                                 </form>
                             </td>
                         </tr>

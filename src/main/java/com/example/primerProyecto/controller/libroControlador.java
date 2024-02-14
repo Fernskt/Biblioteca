@@ -58,14 +58,12 @@ public class libroControlador {
         return "libro_form.html";
 
     }
-    
-    
-    
-    
+
     @PostMapping("/baja/{isbn}")
     public String darDeBaja(@PathVariable Long isbn){
         libroService.cambiarEstadoLibro(isbn);
-        return "redirect:/libro/baja/{isbn}";
+        System.out.println("Esta viajando el isbn: " + isbn);
+        return "redirect:/libro/lista";
     }
 
     @PostMapping("/registro")
